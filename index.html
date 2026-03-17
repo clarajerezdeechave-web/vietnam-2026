@@ -377,6 +377,17 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--dark);overf
   display:flex;align-items:center;justify-content:center;pointer-events:none;
   box-shadow:0 2px 8px rgba(0,0,0,.2)}
 
+/* ── SHEETS BACK TO TOP ── */  
+.sheet-top-btn{position:absolute;bottom:36px;right:20px;z-index:800;
+  display:flex;flex-direction:column;align-items:center;gap:10px;opacity:0;pointer-events:none;transition:opacity .4s ease;cursor:pointer;background:none;border:none;padding:0}
+.sheet-top-btn.visible{opacity:1;pointer-events:all}
+.sheet-top-btn .scroll-line-up{width:1px;height:50px;
+  background:linear-gradient(to top,var(--red),transparent);
+  animation:sline-up 2.2s ease infinite}
+.sheet-top-btn .scroll-lbl-up{font-size:9px;font-weight:600;letter-spacing:2.5px;
+  text-transform:uppercase;color:var(--red);writing-mode:vertical-rl;
+  transform:rotate(180deg)}
+
 /* ── BACK TO TOP ── */
 #gal-top-btn{position:fixed;bottom:36px;right:32px;z-index:800;
   display:flex;flex-direction:column;align-items:center;gap:10px;
@@ -422,10 +433,8 @@ footer{padding:48px var(--px);border-top:1px solid var(--guide);
 }
 @media(max-width:960px){
   :root{--px:32px}
-  /* Itinerary: map full width, list below */
   .itin-grid{grid-template-columns:1fr;gap:40px}
   .map-wrap{width:100%;max-width:360px;margin:0 auto}
-  /* Calendar: mobile nav visible, months hidden/shown via JS */
   .cal-nav{display:flex}
   .cal-m-nav{display:flex}
   .cal-months{margin-bottom:48px}
@@ -433,12 +442,40 @@ footer{padding:48px var(--px);border-top:1px solid var(--guide);
   .cal-month-row .transfers{display:none}
   .cal-mobile-transfers{display:block}
   .cal-wrap{max-width:100%}
-  .cal-transfers-fixed{grid-template-columns:1fr 1fr;gap:48px;}
-  /* Gallery */
+  .cal-transfers-fixed{grid-template-columns:1fr 1fr;gap:48px}
   .gal-grid{columns:2}
 }
 @media(max-width:600px){
   #cities-list{grid-template-columns:1fr}
+}
+@media(max-width:430px){
+  /* Scroll snap */
+html{scroll-snap-type:y mandatory}
+#hero,#itinerary,#calendar,#gallery{scroll-snap-align:start}
+  :root{--px:20px}
+  /* Hero stats */
+  .hero-stats{gap:0;flex-wrap:wrap;justify-content:center}
+  .h-stat{padding:0px!important;flex:0 0 50%;text-align:center;margin-bottom:16px}
+  .h-stat:nth-child(odd){border-right:1px solid rgba(255,255,255,.55)}
+  .h-stat:nth-child(even){border-right:none}
+  .h-stat-n{font-size:16px}
+  /* Calendar */
+  .cal-cell{height:auto;min-height:70px;padding:6px 5px}
+  .cal-pill{font-size:8px;padding:2px 5px;letter-spacing:.4px}
+  .cal-n{font-size:10px}
+  .cal-hd{font-size:8px;letter-spacing:1px}
+  .cal-entry{margin-bottom:2px}
+  .cal-transfers-fixed{gap:18px}
+  /* Gallery */
+  .gal-grid{columns:1}
+  /* Sheets */
+  .p-sheet{width:100%}
+  .p-body{padding:50px 30px}
+  .p-gal-grid{grid-template-columns:repeat(2,1fr);gap:8px;margin-top:20px}
+  .sheet-top-btn{right:10px}
+  .p-num{top:30px;left:30px}
+  .p-close{top:30px;right:30px}
+}
 }
 </style>
 </head>
@@ -646,11 +683,15 @@ footer{padding:48px var(--px);border-top:1px solid var(--guide);
       <div class="p-gal-grid" id="dp-gal-grid"></div>
     </div>
   </div>
+   <button class="sheet-top-btn" id="day-top-btn" onclick="document.getElementById('dp-sheet').scrollTo({top:0,behavior:'smooth'})">
+        <div class="scroll-lbl-up">Back to top</div>
+        <div class="scroll-line-up"></div>
+      </button>
 </div>
 
 <div id="panel">
   <div class="p-bd" onclick="closePanel()"></div>
-  <div class="p-sheet">
+  <div class="p-sheet"id="cp-sheet">
     <div class="p-hero" id="p-hero">
       <div class="p-num" id="p-num">01</div>
       <button class="p-close" onclick="closePanel()">✕</button>
@@ -669,6 +710,10 @@ footer{padding:48px var(--px);border-top:1px solid var(--guide);
       <div class="p-gal-grid" id="p-gal-grid"></div>
     </div>
   </div>
+  <button class="sheet-top-btn" id="city-top-btn" onclick="document.getElementById('cp-sheet').scrollTo({top:0,behavior:'smooth'})">
+        <div class="scroll-lbl-up">Back to top</div>
+        <div class="scroll-line-up"></div>
+      </button>
 </div>
 
 <script>
@@ -1815,6 +1860,22 @@ const obs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});
 },{threshold:.07});
 function observeAll(){document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));}
+
+// Back to top panels
+const dpSheet = document.getElementById('dp-sheet');
+const cpSheet = document.getElementById('cp-sheet');
+
+dpSheet.addEventListener('scroll', function(){
+  const gal = document.getElementById('dp-gal-grid');
+  const galTop = gal.offsetTop;
+  document.getElementById('day-top-btn').classList.toggle('visible', dpSheet.scrollTop > galTop);
+});
+
+cpSheet.addEventListener('scroll', function(){
+  const gal = document.querySelector('.p-gal-grid');
+  const galTop = gal.offsetTop;
+  document.getElementById('city-top-btn').classList.toggle('visible', cpSheet.scrollTop > galTop);
+});
 
 // Slideshow
 (function(){
