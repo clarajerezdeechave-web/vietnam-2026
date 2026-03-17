@@ -25,13 +25,14 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--dark);overf
 /* Logo: fixed top-right before scroll, animates into nav on scroll */
 .nav-logo{font-size:11px;font-weight:600;letter-spacing:3.5px;text-transform:uppercase;
   text-decoration:none;
-  position:fixed;top:22px;right:var(--px);z-index:901;
+  position:fixed;right:var(--px);z-index:901;
   color:rgba(255,255,255,.7);
   transition:transform .65s cubic-bezier(.16,1,.3,1), color .4s}
 /* On scroll: translate to match left nav position */
 #nav.scrolled .nav-logo{
   transform:translateX(calc(-100vw + 2*var(--px) + 100%));
-  color:var(--red)}
+  color:var(--red);opacity:1}
+
 
 .nav-logo em{font-style:normal;color:var(--red)}
 .nav-logo em{font-style:normal;color:var(--red)}
@@ -453,6 +454,11 @@ footer{padding:48px var(--px);border-top:1px solid var(--guide);
 html{scroll-snap-type:y mandatory}
 #hero,#itinerary,#calendar,#gallery{scroll-snap-align:start}
   :root{--px:20px}
+  /* Nav bar */
+  .nav-links{gap:10px}
+  #nav.scrolled .nav-logo span,
+  #nav.scrolled .nav-logo em:last-child{
+  display:none}
   /* Hero stats */
   .hero-stats{gap:0;flex-wrap:wrap;justify-content:center}
   .h-stat{padding:0px!important;flex:0 0 50%;text-align:center;margin-bottom:16px}
