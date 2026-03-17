@@ -408,14 +408,17 @@ footer{padding:48px var(--px);border-top:1px solid var(--guide);
   :root{--px:240px}
   .hero-scroll{right:92px}
   #gal-top-btn{right:92px}
+  .cal-m-nav{display:none}
 }
 @media(max-width:1280px){
   .cal-month-row{grid-template-columns:1fr 220px;gap:40px}
   .cal-wrap{max-width:100%}
+  .cal-m-nav{display:none}
 }
 @media(max-width:1024px){
   :root{--px:48px}
   .cal-month-row{grid-template-columns:1fr 200px;gap:32px}
+  .cal-m-nav{display:none}
 }
 @media(max-width:960px){
   :root{--px:32px}
@@ -424,6 +427,7 @@ footer{padding:48px var(--px);border-top:1px solid var(--guide);
   .map-wrap{width:100%;max-width:360px;margin:0 auto}
   /* Calendar: mobile nav visible, months hidden/shown via JS */
   .cal-nav{display:flex}
+  .cal-m-nav{display:flex}
   .cal-month-row{grid-template-columns:1fr;gap:0}
   .cal-month-row .transfers{display:none}
   .cal-mobile-transfers{display:block}
