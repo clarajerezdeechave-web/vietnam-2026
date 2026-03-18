@@ -215,10 +215,11 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--dark);overf
 #gallery{padding:130px var(--px);border-top:1px solid var(--guide)}
 .gal-top{display:flex;align-items:flex-end;justify-content:space-between;
   gap:32px;margin-bottom:32px;flex-wrap:wrap}
-.gal-filters{display:flex;align-items:center;gap:8px;flex-wrap:wrap;
-  margin-bottom:40px}
+.gal-filters{display:flex;align-items:center;align-content:flex-start;column-gap:8px;row-gap:0;flex-wrap:wrap;
+  margin-bottom:32px}
 .fb{padding:5px 15px;border-radius:20px;font-size:9px;font-weight:700;
   letter-spacing:1.5px;text-transform:uppercase;white-space:nowrap;flex-shrink:0;
+  margin-bottom:8px;
   border:1px solid rgba(48,48,48,.14);cursor:pointer;
   background:transparent;color:var(--dark);transition:all .2s;
   --city-color:rgba(48,48,48,.08);--city-tc:var(--dark)}
@@ -341,7 +342,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--dark);overf
   gap:20px;margin-bottom:18px}
 .p-cname{font-size:44px;font-weight:300;letter-spacing:-2px;line-height:1}
 .p-ctag{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
-  padding:5px 13px;border-radius:8px;flex-shrink:0;margin-top:8px}
+  padding:5px 13px;border-radius:8px;flex-shrink:0;}
 .p-desc{font-size:15px;font-weight:400;line-height:1.72;
   color:rgba(48,48,48,.6);max-width:540px;letter-spacing:-.2px;margin-bottom:40px}
 .p-sub{font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;
@@ -1400,6 +1401,29 @@ function buildGalFilters(){
     btn.onclick=()=>galSetFilter(c.name);
     el.appendChild(btn);
   });
+  galFixFilterRows();
+  new ResizeObserver(()=>galFixFilterRows()).observe(el);
+}
+
+function galFixFilterRows(){
+  const el=document.getElementById('gal-filters');
+  el.querySelectorAll('.fb-break').forEach(b=>b.remove());
+  const pills=[...el.querySelectorAll('.fb')];
+  if(!pills.length) return;
+  const byTop={};
+  pills.forEach(p=>{const t=p.offsetTop;(byTop[t]=byTop[t]||[]).push(p);});
+  const rows=Object.values(byTop);
+  if(rows.length<2) return;
+  const last=rows[rows.length-1];
+  if(last.length>=3) return;
+  const needed=3-last.length;
+  const prev=rows[rows.length-2];
+  if(prev.length<=needed) return;
+  const pivot=prev[prev.length-needed];
+  const br=document.createElement('div');
+  br.className='fb-break';
+  br.style.cssText='flex-basis:100%;height:0;';
+  el.insertBefore(br,pivot);
 }
 
 function galSetFilter(f){
