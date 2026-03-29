@@ -347,8 +347,11 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--dark);overf
   color:rgba(48,48,48,.6);max-width:540px;letter-spacing:-.2px;margin-bottom:16px;
   white-space:pre-line;overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:5}
 .p-desc.expanded{-webkit-line-clamp:initial}
-.dp-desc-toggle{background:none;border:none;padding:0 0 24px;color:var(--red);font-size:13px;
-  font-weight:500;letter-spacing:-.1px;cursor:pointer;display:block;font-family:'Inter',sans-serif}
+.dp-desc-toggle{background:none;border:none;padding:0 0 24px;color:var(--red);
+  font-size:9px;font-weight:600;letter-spacing:3px;text-transform:uppercase;
+  text-decoration:underline;text-underline-offset:3px;
+  cursor:pointer;display:block;text-align:right;font-family:'Inter',sans-serif;
+  width:100%;max-width:540px}
 
 .p-sub{font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;
   color:rgba(48,48,48,.3);margin-bottom:12px;
@@ -927,14 +930,10 @@ const DAYS_DATA={
       {name:'Nhà Spa - 75 Hàng Mã'},
       {name:'Lecker Tạm Thương'},
     ]},
-    dia3:{desc:'Desperté temprano con todo listo para desayunar y coger el minibus camino a la bahía de Ha Long. Me recogieron la primera en una furgoneta de 8 personas y, después de recoger a los demás en sus hoteles correspondientes, pusimos rumbo hacia allí.',places:[
-      {name:'falso sitio'},
-    ]},
+    dia3:{desc:'Desperté temprano con todo listo para desayunar y coger el minibus camino a la bahía de Ha Long. Me recogieron la primera en una furgoneta de 8 personas y, después de recoger a los demás en sus hoteles correspondientes, pusimos rumbo hacia allí.',places:[]},
   },
   'halong':{
-    dia1:{desc:'A mediodía embarqué en el crucero, comí y fui a ver mi camarote. Lujo asiático literal. A primera hora de la tarde el barco paró y nos dejaron hacer kayak por las aguas de la bahía; es lo que más me gustó del crucero. Volví al barco, me bañé en la piscina y luego me di un baño en mi bañera con vistas. El resto del día estuve haciendo fotos sin parar y ya de noche, antes de cenar, nos enseñaron cómo hacer rollitos vietnamitas.',places:[
-      {name:'falso sitio'},
-    ]},
+    dia1:{desc:'A mediodía embarqué en el crucero, comí y fui a ver mi camarote. Lujo asiático literal. A primera hora de la tarde el barco paró y nos dejaron hacer kayak por las aguas de la bahía; es lo que más me gustó del crucero. Volví al barco, me bañé en la piscina y luego me di un baño en mi bañera con vistas. El resto del día estuve haciendo fotos sin parar y ya de noche, antes de cenar, nos enseñaron cómo hacer rollitos vietnamitas.',places:[]},
     dia2:{desc:'Madrugón épico para desayunar y coger minibarcos hasta la isla de Cát Bà, la isla de las mujeres. Allí fuimos a visitar la Cueva Hospital, que se llama así porque literalmente la usaban como hospital durante la guerra. Volvimos al crucero y tomamos un brunch; después nos llevaron en los minibarcos a puerto y esperé hasta que llegó mi autobús con destino a Tam Coc. Dormí casi todo el trayecto cómodamente porque iba en el primer asiento y se reclinaba casi por completo.',places:[
       {name:'Northern Pier of Cat Ba'},
       {name:'Military Hospital Cave'}
@@ -998,9 +997,7 @@ const DAYS_DATA={
       {name:'Five Senses Spa Hoi An'},
       {name:'The Lantern Lady'}
     ]},
-    dia4:{desc:'Desayuné un bocadillo de tortilla y me fui a hacer un taller de preparación de cafés. Una chica muy simpática llamada Loan me enseñó a preparar phin coffee, egg coffee, salted coffee y coconut coffee. Di un paseo y encontré un sitio con unas sedas muy bonitas; Hoi An es famoso por las sastrerías, la ropa a medida y las personas que trabajan el cuero para hacer zapatos y bolsos. Así que encargué una tote bag para recoger esa misma tarde. Estuve leyendo Hamnet en la plaza del mercado después de comer, casi hasta que atardeció, y fui a recoger mi bolsa. Volví al homestay para acabar la maleta y salí a comerme una crep de plátano y chocolate antes de coger un grab al punto de recogida de mi bus nocturno hacia Nha Trang.',places:[
-      {name:'sitio falso'},
-    ]},
+    dia4:{desc:'Desayuné un bocadillo de tortilla y me fui a hacer un taller de preparación de cafés. Una chica muy simpática llamada Loan me enseñó a preparar phin coffee, egg coffee, salted coffee y coconut coffee. Di un paseo y encontré un sitio con unas sedas muy bonitas; Hoi An es famoso por las sastrerías, la ropa a medida y las personas que trabajan el cuero para hacer zapatos y bolsos. Así que encargué una tote bag para recoger esa misma tarde. Estuve leyendo Hamnet en la plaza del mercado después de comer, casi hasta que atardeció, y fui a recoger mi bolsa. Volví al homestay para acabar la maleta y salí a comerme una crep de plátano y chocolate antes de coger un grab al punto de recogida de mi bus nocturno hacia Nha Trang.',places:[]},
   },
   'nhatrang':{
     dia1:{desc:'Llegué a Nha Trang cuando amanecía; toda la playa estaba llena de gente nadando y haciendo ejercicio a las 6 de la mañana. Tenía reservado un apartamentito enfrente del mar e intenté hacer el check-in antes, o que por lo menos me dejaran dejar las dos mochilas que llevaba ahora hasta arriba de cosas que había comprado en Hoi An. Resumiendo, no pude. Así que me fui con mis mochilas a desayunar unas crepes y a tomarme un café. El check-in era a las 14 y tenía muchas horas por delante, así que me fui a la playa, me puse el bikini y alquilé unas tumbonas, una para mí y otra para mis mochilas. Al intentar hacer el check-in a las 14, las personas del apartamento dejaron de contestarme y, 45 minutos después, me tuve que buscar una alternativa. Pero primero esperé otros 35 minutos para sentarme y comerme una pizza. Mientras me la comía intenté reservar otro hotel, el cual también me cancelaron a los 5 minutos. Un poco harta, reservé uno MUY barato al final de la playa, en el barrio ruso. Cogí un grab y al llegar vi otro que me pareció muy bonito; entré a preguntar cuánto costaba la noche y, al ser el que había reservado bastante más barato, decidí ir a ver primero. No pasé de la recepción. Antes de que me atendieran volví al que me había llamado la atención y cogí una habitación sin saber siquiera cómo sería. Pues resultó ser una suite, con cocina, saloncito y la mejor cama de la historia, con balconcito y todo. Y quiero aclarar que cuando digo que este era más caro que el otro es porque toda la estancia me costó 53 € vs 20 € que costaba el anterior. ¡Cómo, CÓMO se puede ser tan rata de cloaca, os preguntaréis! Pero es que cuando empiezas a acostumbrarte a los precios de allí empiezas a tener el valor de caro y barato de allí, aunque cuando te paras a pensarlo realmente… Después de darme una ducha y descansar un poco bajé a una lavandería al lado del hotel a hacer mi colada y estuve leyendo mientras lavaba y secaba. Ya con toda mi ropa limpia, me fui a dar un paseo y cenar.',places:[
@@ -1066,7 +1063,7 @@ const DAYS_DATA={
     dia3:{desc:'Últimas horas en HCMC. Fui a hacer la colada a una lavandería autoservicio muy moderna; metes la ropa y la misma máquina te lava y seca, por lo que no tienes que volver a cambiar la ropa de máquina; además, con un código QR puedes ver en tiempo real cuánto le queda para acabar. Mientras mi ropa quedaba limpia, me fui a desayunar, a comprar últimos souvenirs y a tomarme un café. Cuando hubo acabado, volví y acabé la maleta, descansé el rato que quedaba hasta marchar y pedí el grab con parada para recoger a Sophie, que desde la vuelta del Mekong se alojaba en otro homestay no muy lejos del mío.Cogimos el grab y llegamos al aeropuerto, nos tomamos un café y esperamos juntas hasta que se acercó la hora y nos despedimos en mi puerta de embarque. Sophie es la única persona con la que he seguido hablando después de volver de Vietnam; me gustaría visitarla en Viena o que ella viniera a Barcelona porque me gustó mucho el tiempo que compartimos y creo que podríamos ser amigas. Cogí el avión de vuelta a Hanoi.',places:[
       {name:'SESA Coin Laundry Cửa hàng giặt sấy tự động'},
       {name:'Cam Tom Street Food'},
-      {name:'AM:PM cafe & pop-ups'}]
+      {name:'AM:PM cafe & pop-ups'}]},
   },
   'hanoi-2':{
     dia1:{desc:'Aterricé en Hanoi ya anocheciendo y cogí un grab desde Nội Bài. Era hora punta y tardé más de una hora en llegar cerca de mi homestay. Había también muchas calles cortadas porque nos acercábamos al año nuevo y había celebraciones previas por todas partes. Me alojé en una habitación en un 4.º piso sin ascensor a la que se accedía por un spa. Bajé a dar una vuelta para ver qué cenar y con la misión de comprar unos guantes para mi próxima experiencia motera (los compré, pero nunca los usé). Era la segunda vez que estaba en Hanoi y encontré la ciudad distinta; no me apetecía nada llegar allí cuando estaba en Ho Chi Minh City, pero después de tres semanas en Vietnam, ya no me abrumaba tanto y se me hizo más cómoda. Fui a cenar a un sitio en el que el único plato que servían era bún bò Nam Bộ, una especie de ensalada de vermicelli y ternera, con lechuga, hierbas y cacahuetes. Después, de camino a mi habitación, compré un roti —que es como un bollito caliente relleno de cosas, el mío siempre de chocolate— y me lo llevé a la habitación para acompañar mi infusión nocturna. En Hanoi hay un sitio muy famoso de rotis en el Old Quarter en el que siempre hay mucha cola, pero justo al lado hay otro que (para mi gusto) está más bueno y no tiene tanta fila. Me fui a dormir y estuve toda la noche tosiendo sin parar.',places:[
@@ -1100,7 +1097,7 @@ const DAYS_DATA={
       {name:'Bản Du lịch Lô Lô Chải'},
       {name:'Như Ý Massage Cơ Sở 3'}
     ]},
-    dia5:{desc:'Placeholder: vuelta a Ha Giang.',places:[]},
+    dia5:{desc:'Placeholder: vuelta a Ha Giang.',places:[{name:'Như Ý Massage Cơ Sở 3'}]},
   },
   'hanoi-3':{
     dia1:{desc:'Placeholder: llegada de Ha Giang.',places:[]},
@@ -1133,12 +1130,14 @@ const DATE_DAY_MAP={
   '2026-01-25':['nhatrang','dia1','25 ENE'],
   '2026-01-26':['nhatrang','dia2','26 ENE'],
   '2026-01-27':['nhatrang','dia3','27 ENE'],
+  '2026-01-28-nhatrang':['nhatrang','dia4','28 ENE'],
   '2026-01-28':['hochiminh-1','dia1','28 ENE'],
   '2026-01-29':['mekong','dia1','29 ENE'],
   '2026-01-30':['mekong','dia2','30 ENE'],
   '2026-01-30-hochiminh-2':['hochiminh-2','dia1','30 ENE'],
   '2026-01-31':['hochiminh-2','dia1','31 ENE'],
   '2026-02-01':['hochiminh-2','dia2','1 FEB'],
+  '2026-02-01-hochiminh-2':['hochiminh-2','dia3','1 FEB'],
   '2026-02-01-hanoi-2':['hanoi-2','dia1','1 FEB'],
   '2026-02-02':['hanoi-2','dia2','2 FEB'],
   '2026-02-02-hagiang':['hagiang','dia1','2 FEB'],
@@ -1783,7 +1782,7 @@ function openDayPanel(cityId, dia, dateLabel, fromCityId){
     places.forEach(p=>{
       const a=document.createElement('a');
       a.className='dp-place';
-      a.href=`https://www.google.com/maps/search/${encodeURIComponent(p.name)}`;
+      a.href=`https://www.google.com/maps/search/${encodeURIComponent(p.name + ', ' + c.name + ', Vietnam')}`;
       a.target='_blank';
       a.innerHTML=`
         <div class="dp-place-dot" style="background:${c.color}"></div>
