@@ -2162,6 +2162,44 @@ if(window.innerWidth<=768)(function(){
   attach(document.getElementById('dp-gal-grid'), '.p-gal-item');
   attach(document.getElementById('p-gal-grid'),  '.p-gal-item');
 })();
+
+/* ── IMAGE PROTECTION ── */
+(()=>{
+  const tip = document.createElement('div');
+  tip.innerHTML = `
+    <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:4px">© Clara Jerez de Echave 2026</div>
+    <div style="font-size:10px;font-weight:400;opacity:.75;letter-spacing:.3px">All rights reserved. Unauthorised use,<br>reproduction or distribution is prohibited.</div>
+  `;
+  Object.assign(tip.style, {
+    position:'fixed', zIndex:'99999',
+    background:'rgba(30,30,30,.97)', color:'#fff',
+    padding:'12px 16px', borderRadius:'6px',
+    pointerEvents:'none', display:'none',
+    boxShadow:'0 4px 20px rgba(0,0,0,.35)',
+    borderLeft:'3px solid #FF4205',
+    lineHeight:'1.5', maxWidth:'260px'
+  });
+  document.body.appendChild(tip);
+
+  let hideTimer;
+  document.addEventListener('contextmenu', e => {
+    if (e.target.tagName === 'IMG') {
+      e.preventDefault();
+      clearTimeout(hideTimer);
+      let x = e.clientX + 14, y = e.clientY + 14;
+      if (x + 280 > window.innerWidth)  x = e.clientX - 280;
+      if (y + 80  > window.innerHeight) y = e.clientY - 80;
+      tip.style.left = x + 'px';
+      tip.style.top  = y + 'px';
+      tip.style.display = 'block';
+      hideTimer = setTimeout(() => tip.style.display = 'none', 2800);
+    }
+  });
+
+  document.addEventListener('dragstart', e => {
+    if (e.target.tagName === 'IMG') e.preventDefault();
+  });
+})();
 </script>
 </body>
 </html>
