@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
 <title>Vietnam 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -664,7 +665,7 @@ html{scroll-snap-type:y proximity}
 
 <footer>
   <div class="fw">Viet<strong>nam</strong></div>
-  <div class="fn">Clara · Enero – Febrero 2026</div>
+  <div class="fn">® Clara · Enero – Febrero 2026</div>
 </footer>
 
 <div id="vid-lb">
@@ -1156,8 +1157,8 @@ const DATE_DAY_MAP={
   '2026-01-29':['mekong','dia1','29 ENE'],
   '2026-01-30':['mekong','dia2','30 ENE'],
   '2026-01-30-hochiminh-2':['hochiminh-2','dia1','30 ENE'],
-  '2026-01-31':['hochiminh-2','dia1','31 ENE'],
-  '2026-02-01':['hochiminh-2','dia2','1 FEB'],
+  '2026-01-31':['hochiminh-2','dia2','31 ENE'],
+  '2026-02-01':['hochiminh-2','dia3','1 FEB'],
   '2026-02-01-hochiminh-2':['hochiminh-2','dia3','1 FEB'],
   '2026-02-01-hanoi-2':['hanoi-2','dia1','1 FEB'],
   '2026-02-02':['hanoi-2','dia2','2 FEB'],
@@ -2192,8 +2193,13 @@ if(window.innerWidth<=768)(function(){
       tip.style.left = x + 'px';
       tip.style.top  = y + 'px';
       tip.style.display = 'block';
-      hideTimer = setTimeout(() => tip.style.display = 'none', 2800);
+      hideTimer = setTimeout(() => tip.style.display = 'none', 1200);
     }
+  });
+
+  document.addEventListener('click', () => {
+    clearTimeout(hideTimer);
+    tip.style.display = 'none';
   });
 
   document.addEventListener('dragstart', e => {
